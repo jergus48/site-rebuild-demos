@@ -1,93 +1,79 @@
-<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><!--swx-perf--><script>
-/* Keeps the concept pages smooth on slower phones and laptops.
-   Weak device (<=4 cores, <=4 GB, data saver, touch screen) or ?lite=1 -> "lite" mode:
-   - canvases render at 1x pixel density
-   - animation loops share one 30fps clock instead of running flat out
-   - frosted-glass blur (backdrop-filter) is replaced by a near-solid fill, it is the costliest effect on weak GPUs
-   Every device: animation loops pause while the tab is hidden, and off-screen sections skip rendering. */
-(function(){var d=document.documentElement,n=navigator,q=location.search;
-var lite=/lite=1/.test(q)||(!/lite=0/.test(q)&&((n.hardwareConcurrency||8)<=4||(n.deviceMemory||8)<=4||(n.connection&&n.connection.saveData)||matchMedia('(pointer:coarse)').matches));
-if(lite){d.classList.add('lite');try{Object.defineProperty(window,'devicePixelRatio',{get:function(){return 1}})}catch(e){}}
-var raf=window.requestAnimationFrame.bind(window),queue=[],id=0,sched=false,lastT=0,gap=lite?32:0;
-function flush(ts){if(document.hidden||ts-lastT<gap){raf(flush);return}lastT=ts;sched=false;var list=queue;queue=[];for(var i=0;i<list.length;i++){try{list[i].cb(ts)}catch(e){setTimeout(function(){throw e})}}}
-window.requestAnimationFrame=function(cb){var h=++id;queue.push({h:h,cb:cb});if(!sched){sched=true;raf(flush)}return h};
-window.cancelAnimationFrame=function(h){queue=queue.filter(function(x){return x.h!==h})};
-// SWX.on(el): is the element on screen? Canvas loops call it to skip drawing while scrolled away.
-var vis=new WeakMap(),io=null;window.SWX={lite:lite,on:function(el){if(!vis.has(el)){vis.set(el,true);io=io||new IntersectionObserver(function(es){es.forEach(function(e){vis.set(e.target,e.isIntersecting)})});io.observe(el)}return vis.get(el)}};
-if(lite)document.addEventListener('DOMContentLoaded',function(){var bg=getComputedStyle(document.body).backgroundColor.match(/\d+/g)||[255,255,255];
- var dark=(+bg[0]*.3+ +bg[1]*.59+ +bg[2]*.11)<128;
- document.querySelectorAll('body *').forEach(function(el){var cs=getComputedStyle(el),bf=cs.backdropFilter||cs.webkitBackdropFilter;if(bf&&bf!=='none'){el.style.backdropFilter='none';el.style.webkitBackdropFilter='none';
-  if(!/^(canvas|svg)$/i.test(el.tagName))el.style.backgroundColor='rgba('+bg[0]+','+bg[1]+','+bg[2]+','+(dark?.9:.92)+')'}})});
-})();
-</script><style>
-section{content-visibility:auto;contain-intrinsic-size:auto 900px}
-.lite *{text-shadow:none!important}
-.lite .cloud,.lite .beam{filter:none!important}
-.lite body::before,.lite body::after,.lite .grain{display:none!important}
-</style><!--/swx-perf--><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
-<title>The Cycle Technician | Bike servicing, wheel building and custom builds, Oundle</title>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><!--swx-perf--><!--/swx-perf--><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>The Cycle Technician | Bike servicing, wheel building and custom builds, Oundle</title>
 <meta name="description" content="City and Guilds Level 3 trained cycle technician in Oundle: interim service £47, full service £110, component servicing, wheel building, classic refurbishment and custom builds.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#eef0ec;--ink:#151817;--mut:#5f6662;--olive:#4a6a2a;--copper:#c46a2e;--steel:#9aa3a0}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:400 17px/1.6 Sora,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}.w{width:min(1200px,100% - 40px);margin:0 auto}
-.glass{background:linear-gradient(150deg,rgba(255,255,255,.8),rgba(255,255,255,.35));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1.5px 0 #fff,0 24px 50px -26px rgba(21,24,23,.35)}
-nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;width:min(1200px,100% - 24px);display:flex;align-items:center;gap:22px;padding:10px 10px 10px 22px;border-radius:14px}
-.brand{margin-right:auto;font:800 19px Sora;letter-spacing:-.02em}.brand span{color:var(--copper)}
-nav .lk{display:flex;gap:22px;font-size:14px;color:var(--mut)}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:12px;font:600 15px Sora;transition:transform .3s}.btn:hover{transform:translateY(-2px)}.btn.c{background:var(--copper);color:#fff;box-shadow:0 12px 26px -12px var(--copper)}.btn.o{box-shadow:inset 0 0 0 1.5px var(--ink)}
-.hero{min-height:100vh;padding:110px 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;width:min(1200px,100% - 40px);margin:0 auto}
-.kick{font:500 12px 'Fira Code';letter-spacing:.06em;text-transform:uppercase;color:var(--copper)}
-h1{font:800 clamp(48px,6.2vw,100px)/.92 Sora;letter-spacing:-.05em;margin:14px 0 18px}h1 span{color:var(--olive)}
-.lede{font-size:18px;color:#444b47;max-width:470px}.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-.truing{border-radius:26px;padding:22px}
-.truing h3{font:700 20px Sora;display:flex;justify-content:space-between}.truing h3 small{font:400 12px 'Fira Code';color:var(--mut)}
-.stand{position:relative;margin:10px auto;width:min(320px,100%);aspect-ratio:1}.stand svg{width:100%;height:100%}
-.gauge{display:flex;align-items:center;gap:10px;font:400 13px 'Fira Code'}.gauge .bar{flex:1;height:10px;border-radius:9px;background:#dfe3df;overflow:hidden;position:relative}.gauge .bar i{position:absolute;top:0;bottom:0;left:50%;width:4px;background:var(--copper);transition:transform .2s}
-.truing button{margin-top:12px;width:100%;border:0;cursor:pointer;padding:12px;border-radius:12px;font:600 15px Sora;background:var(--ink);color:#fff}
-.status{font:400 13px 'Fira Code';color:var(--mut);margin-top:8px;min-height:20px}
-section{padding:120px 0}h2{font:800 clamp(40px,5.2vw,82px)/.94 Sora;letter-spacing:-.05em;margin:12px 0 46px;max-width:950px}h2 span{color:var(--copper)}
-.rv{opacity:0;transform:translateY(30px);transition:opacity 1s,transform 1.1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0)*.08s)}.rv.in{opacity:1;transform:none}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:18px}.pl{padding:34px;border-radius:26px;position:relative;overflow:hidden}.pl.full{background:var(--ink);color:#fff}
-.pl small{font:400 12px 'Fira Code';color:var(--copper)}.pl h3{font:800 34px Sora;letter-spacing:-.04em;margin:8px 0}.pl .p{font:800 64px/1 Sora;letter-spacing:-.05em}.pl ul{list-style:none;margin-top:16px}.pl li{padding:8px 0;border-top:1px solid rgba(128,128,128,.25);font-size:15px}.pl li::before{content:"✓  ";color:var(--copper)}
-.spec{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}.sp{padding:26px;border-radius:22px}.sp h3{font:700 20px Sora;margin-bottom:6px}.sp p{font-size:15px;color:var(--mut)}
-.pics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}.pics img{width:100%;height:200px;object-fit:cover;border-radius:18px}
-.visit{display:grid;grid-template-columns:1fr 1fr;gap:22px}.card{border-radius:22px;padding:34px}.card .big{display:block;font:800 clamp(36px,4vw,56px)/1 Sora;letter-spacing:-.04em;color:var(--copper)}
-form{display:grid;gap:14px}label{display:grid;gap:6px;font:400 11px 'Fira Code';text-transform:uppercase;color:var(--mut)}form input,form select,form textarea{font:400 16px Sora;padding:12px 14px;border-radius:12px;border:1.5px solid #d5dad5;background:#fff;outline:none}form button{justify-self:start;border:0;cursor:pointer}form small{font-size:12px;color:var(--mut)}
-.gm{margin-top:22px;height:320px;border-radius:22px;overflow:hidden}.gm iframe{width:100%;height:100%;border:0}
-footer{padding:70px 0 110px;text-align:center;color:var(--mut);font-size:13px}footer b{display:block;font:800 clamp(44px,9vw,140px)/.9 Sora;letter-spacing:-.06em;color:var(--ink)}
-.swx{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:99;padding:9px 16px;border-radius:999px;font:400 12px 'Fira Code'}
-@media(max-width:960px){nav .lk{display:none}.hero,.visit,.cmp{grid-template-columns:1fr}.spec,.pics{grid-template-columns:1fr}}@media(max-width:560px){nav .btn{display:none}}
-</style></head><body>
-<nav class="glass"><a class="brand" href="#">The Cycle <span>Technician</span></a><div class="lk"><a href="#services">Services</a><a href="#specialist">Specialist</a><a href="#visit">Book</a></div><a class="btn c" href="tel:+441832358732">01832 358732</a></nav>
-<header class="hero">
- <div><div class="kick">1 Kings Road · Oundle · City &amp; Guilds Level 3</div>
-  <h1>Straight wheels. <span>True work.</span></h1>
-  <p class="lede">Professional maintenance, wheel building, component upgrades and custom new builds from an Oundle workshop with an eye for detail, the best industry-standard tools and top brand lubricants.</p>
-  <div class="acts"><a class="btn c" href="#visit">Book a service</a><a class="btn o" href="#services">Prices</a></div></div>
- <div class="truing glass"><h3>Truing stand <small id="mm">wobble 2.4 mm</small></h3>
-  <div class="stand"><svg viewBox="0 0 200 200"><path d="M20 190 L60 40 M180 190 L140 40 M60 40 H140" stroke="#9aa3a0" stroke-width="6" fill="none" stroke-linecap="round"/><g id="wheel"><ellipse id="rim" cx="100" cy="110" rx="66" ry="66" fill="none" stroke="#151817" stroke-width="7"/><g id="spk"></g><circle cx="100" cy="110" r="8" fill="#c46a2e"/></g><path d="M166 100 l10 0 M166 120 l10 0" stroke="#c46a2e" stroke-width="4"/></svg></div>
-  <div class="gauge"><span>L</span><div class="bar"><i id="nd"></i></div><span>R</span></div>
-  <button id="tr">Turn the spoke key</button><p class="status" id="st">Out of true: the caliper says so.</p></div>
-</header>
-<section id="services"><div class="w"><div class="kick rv">Standard services</div><h2 class="rv">Two services. <span>No guesswork.</span></h2>
- <div class="cmp"><div class="pl glass rv"><small>INTERIM</small><h3>Interim service</h3><div class="p">£47</div><ul><li>Keeps your bike running reliably</li><li>Minimises wear on key components</li><li>Spots parts that need replacing</li><li>Replacement parts charged separately</li></ul></div>
- <div class="pl full rv" style="--i:1"><small>FULL</small><h3>Full service</h3><div class="p">£110</div><ul><li>A full refurbishment</li><li>Every part serviced</li><li>Critical components lubricated, worn parts replaced</li><li>Frame polished</li></ul></div></div>
- <div class="spec" id="specialist"><div class="sp glass rv"><h3>Component service</h3><p>Gears that need adjusting, brakes that don't work properly, wheels out of true.</p></div><div class="sp glass rv" style="--i:1"><h3>Specialist work</h3><p>Classic bike refurbishment, wheel building, hydraulic brakes, forks and shocks, upgrades.</p></div><div class="sp glass rv" style="--i:2"><h3>Custom new builds</h3><p>Piece-part builds, with a written quotation covering sourcing and fitting.</p></div></div>
- <div class="pics"><img class="rv" src="/the-cycle-technician/p1.jpg" alt="The Cycle Technician workshop" loading="lazy"><img class="rv" style="--i:1" src="/the-cycle-technician/p2.jpg" alt="The Cycle Technician workshop" loading="lazy"><img class="rv" style="--i:2" src="/the-cycle-technician/p3.jpg" alt="The Cycle Technician workshop" loading="lazy"></div></div></section>
-<section id="visit" style="padding-top:0"><div class="w"><div class="kick rv">Book</div><h2 class="rv">Bring it to <span>Kings Road.</span></h2>
- <div class="visit"><div class="card glass rv"><a class="big" href="tel:+441832358732">01832 358732</a><p>Mobile <a href="tel:+447864937645">07864 937645</a> · <a href="mailto:paul@thecycletechnician.co.uk" style="color:var(--copper)">paul@thecycletechnician.co.uk</a></p><p style="margin-top:12px;color:var(--mut)">1 Kings Road, Oundle, Peterborough PE8 4AX</p></div>
- <form class="card glass rv demo" style="--i:1"><label>Name<input required></label><label>Phone<input required></label><label>Service<select><option>Interim service · £47</option><option>Full service · £110</option><option>Component service</option><option>Wheel build</option><option>Custom build quote</option></select></label><button class="btn c" type="submit">Book it in</button><small>Design concept: this form does not send anything yet.</small></form></div>
- <div class="gm rv"><iframe loading="lazy" title="Map" src="https://www.google.com/maps?q=1%20Kings%20Road%2C%20Oundle%20PE8%204AX&output=embed"></iframe></div></div></section>
-<footer><b>The Cycle Technician</b>1 Kings Road, Oundle PE8 4AX · 01832 358732</footer>
-<a class="swx glass" href="https://swiftrix.eu" target="_blank" rel="noopener">Design concept by Swiftrix</a>
-<script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-$('#spk').innerHTML=Array.from({length:16},(_,i)=>{const a=i/16*Math.PI*2;return `<path d="M${100+Math.cos(a)*8} ${110+Math.sin(a)*8} L${100+Math.cos(a+.4)*62} ${110+Math.sin(a+.4)*62}" stroke="#9aa3a0" stroke-width="1.2"/>`}).join('');
-let wob=2.4,rot=0;(function f(){rot+=4;const w=Math.sin(rot*Math.PI/180)*wob;$('#wheel').setAttribute('transform',`rotate(${rot} 100 110) translate(${w} 0)`);$('#rim').setAttribute('rx',66-Math.abs(w)*.4);$('#nd').style.transform=`translateX(${w*30}px)`;requestAnimationFrame(f)})();
-$('#tr').onclick=()=>{wob=Math.max(0,+(wob-.6).toFixed(1));$('#mm').textContent='wobble '+wob.toFixed(1)+' mm';$('#st').textContent=wob>0?'Quarter turn... still a little out.':'True. That is how every wheel leaves our stand.';if(wob===0)setTimeout(()=>{wob=2.4;$('#mm').textContent='wobble 2.4 mm';$('#st').textContent='Next wheel on the stand.'},4000)};
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});$$('.rv').forEach(el=>io.observe(el));
-$$('form.demo').forEach(f=>f.onsubmit=e=>{e.preventDefault();const b=f.querySelector('button');b.textContent='Booked (concept)';b.disabled=true});
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{overflow-x:hidden;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit;color:inherit}.swx{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:90;padding:8px 15px;border-radius:99px;font:700 12px/1.3 system-ui,sans-serif;white-space:nowrap;background:rgba(12,14,18,.82);color:#fff;border:1px solid rgba(255,255,255,.25)}:focus-visible{outline:3px solid currentColor;outline-offset:3px}form small{display:block}.top{transition:opacity .35s,transform .35s}.top.hid{opacity:0;transform:translateY(-24px);pointer-events:none}</style><style>body{background:var(--bg);color:var(--fg);font:400 18px/1.6 var(--fb)}#c{position:fixed;inset:0;width:100%;height:100%}.nogl #c{background:linear-gradient(160deg,var(--ac),var(--bg) 70%)}
+.top{position:fixed;z-index:20;top:0;left:0;right:0;padding:26px 4vw;display:flex;justify-content:space-between;align-items:center;gap:20px;font:var(--ft,700 18px/1.2 var(--fb))}.top a{white-space:nowrap}
+main{position:relative;z-index:5}.s{min-height:165vh;padding:0 4vw}.s>div{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:110px 0 13vh}.s.t>div{justify-content:flex-start}.s.m>div{justify-content:center}.s.r>div{align-items:flex-end;text-align:right}.s.c>div{align-items:center;text-align:center}
+h1{font:var(--h1);letter-spacing:var(--ls,-.03em);text-wrap:balance}h2{font:var(--h2);letter-spacing:var(--ls,-.03em);max-width:14ch;text-wrap:balance}.s p{margin-top:20px;max-width:30em;font-size:clamp(17px,1.35vw,21px)}
+.ct{position:relative;min-height:100vh;padding:110px 4vw 100px;display:grid;grid-template-columns:1.15fr 1fr;gap:5vw;align-items:center;background:var(--cb,transparent)}.ct .tel{display:block;font:var(--h2);font-size:clamp(34px,4.6vw,78px);line-height:1.05;letter-spacing:var(--ls,-.03em);color:var(--ac);white-space:nowrap;margin:24px 0 16px}
+form{display:grid;gap:14px;padding:var(--fp,0);background:var(--fbg,none);color:var(--ffg,inherit)}label{display:grid;gap:5px;font-size:15px;font-weight:600}form input,form select{width:100%;padding:14px;font-size:16px;border:var(--ib,1px solid rgba(255,255,255,.4));background:var(--ibg,rgba(0,0,0,.4));border-radius:var(--ir,0)}option{color:#111}form button{border:0;padding:18px;background:var(--ac);color:var(--bt,#111);font-weight:800;font-size:17px;border-radius:var(--ir,0);cursor:pointer}form button:hover{filter:brightness(1.15)}small{opacity:.85}
+@media(max-width:760px){body{font-size:17px}.s,.ct{padding-left:20px;padding-right:20px}.s>div{padding-bottom:92px}.ct{grid-template-columns:1fr;padding-top:80px;align-content:center}.top{padding:20px;font-size:15px}.ct .tel{font-size:clamp(26px,9.4vw,44px)}}</style><style>:root{--bg:#e9e4da;--fg:#14181a;--ac:#d4380d;--fb:Archivo,sans-serif;--ft:400 18px/1 'Archivo Black';--h1:400 clamp(56px,11vw,200px)/.84 'Archivo Black';--h2:400 clamp(44px,7.2vw,130px)/.88 'Archivo Black';--ls:-.055em;--ib:2px solid #14181a;--ibg:#fff;--bt:#fff;--cb:linear-gradient(transparent,rgba(233,228,218,.86) 32%)}.s p{font-weight:500}.pr{font:400 clamp(26px,2.6vw,46px)/1.15 'Archivo Black';letter-spacing:-.04em}</style></head><body><canvas id="c"></canvas>
+<div class="top"><a href="#top">The Cycle Technician</a><a href="tel:+441832358732">01832 358732</a></div><main id="top">
+<section class="s"><div><h1>All in<br>pieces.</h1><p>Professional bike maintenance, wheel building and custom builds in Oundle. Scroll to put it back.</p></div></section>
+<section class="s r"><div style="padding-bottom:9vh"><h2>Wheels, laced and true.</h2><p>Wheel building, hydraulic brakes, forks and shocks, upgrades.</p></div></section>
+<section class="s t"><div><h2>Every part, serviced.</h2><p class="pr">Interim £47<br>Full service £110</p><p style="font-size:16px;margin-top:10px">Replacement parts charged separately.</p></div></section>
+<section class="s t c"><div><h2 style="max-width:none">Now ride it.</h2><p>City and Guilds Level 3 trained. Custom builds come with a written quotation.</p></div></section>
+<section class="ct"><div><h2>Book it in.</h2><a class="tel" href="tel:+441832358732">01832 358732</a>Mobile 07864 937645<br><a href="mailto:paul@thecycletechnician.co.uk">paul@thecycletechnician.co.uk</a><p>1 Kings Road, Oundle, Peterborough PE8 4AX</p></div><form><label>Name<input required></label><label>Phone<input type="tel" required></label><label>Service<select><option>Interim service, £47</option><option>Full service, £110</option><option>Component service</option><option>Wheel build</option><option>Custom build quote</option></select></label><button>Book it in</button><small>Design concept: this form does not send anything yet. The bike is an illustration.</small></form></section></main><a class="swx" href="https://swiftrix.eu" target="_blank" rel="noopener">Design concept by Swiftrix</a><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><script>const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),lerp=(a,b,k)=>a+(b-a)*k,seg=(v,a,b)=>clamp((v-a)/(b-a)),ease=k=>k*k*(3-2*k);
+const W={p:0,x:0,y:0,tx:0,ty:0,touched:false,rm:matchMedia('(prefers-reduced-motion: reduce)').matches,mob:innerWidth<760};
+const rawP=()=>{const h=document.documentElement.scrollHeight-innerHeight;return h>0?clamp(scrollY/h):0};W.p=rawP();
+addEventListener('pointermove',e=>{W.touched=true;W.tx=e.clientX/innerWidth*2-1;W.ty=1-e.clientY/innerHeight*2},{passive:true});
+function stage(opt){
+  const cvs=opt.canvas;let r;
+  try{if(!window.THREE)throw 0;r=new THREE.WebGLRenderer({canvas:cvs,antialias:innerWidth>760,powerPreference:'high-performance'})}catch(e){document.body.classList.add('nogl');return}
+  let dpr=Math.min(devicePixelRatio||1,opt.dpr||(W.mob?1.25:1.6));const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(opt.fov||45,1,.1,400);
+  r.outputEncoding=THREE.sRGBEncoding;r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=opt.exposure||1;
+  if(opt.shadows){r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap}
+  let cw=0,ch=0;const size=()=>{const w=cvs.clientWidth,h=cvs.clientHeight;if(w===cw&&h===ch)return;cw=w;ch=h;W.mob=innerWidth<760;r.setPixelRatio(dpr);r.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();opt.resize&&opt.resize(w,h)};
+  opt.setup({scene,camera,renderer:r});if(opt.lin){const sn=new Set();scene.traverse(o=>[].concat(o.material||[]).forEach(m=>{if(!sn.has(m)&&(m.isMeshStandardMaterial||m.isMeshBasicMaterial)){sn.add(m);m.color.convertSRGBToLinear();m.emissive&&m.emissive.convertSRGBToLinear()}}))}size();
+  let last=0,acc=0,n=0,T=0;
+  const loop=now=>{requestAnimationFrame(loop);if(document.hidden){last=0;return}const ms=Math.min(60,now-(last||now-16));last=now;const dt=ms/1000;if(!W.rm)T+=dt;
+    acc+=ms;if(++n===40){const a=acc/n;acc=n=0;if(a>30&&dpr>.6){dpr=Math.max(.6,dpr*.8);cw=0}}
+    size();const k=W.rm?1:1-Math.exp(-dt*5);W.p+=(rawP()-W.p)*k;W.x+=(W.tx-W.x)*k;W.y+=(W.ty-W.y)*k;upS();fades();opt.frame(T,dt);r.render(scene,camera)};
+  requestAnimationFrame(loop);
+}
+// studio reflections, so metal looks like metal
+function env(scene,r,strips,base){const s=new THREE.Scene();s.background=new THREE.Color(base||'#0b0e16');strips.forEach(a=>{const m=new THREE.Mesh(new THREE.BoxGeometry(a[4]||4,a[5]||4,a[6]||.2),new THREE.MeshBasicMaterial({color:new THREE.Color(a[0]).multiplyScalar(a[7]||4),side:2,toneMapped:false}));m.position.set(a[1],a[2],a[3]);m.lookAt(0,0,0);s.add(m)});const g=new THREE.PMREMGenerator(r);scene.environment=g.fromScene(s,.03).texture;g.dispose()}
+// W.s: which section we are in, as a smooth number (0 = first pinned, 1 = second ...)
+let _so=[];const _ms=()=>{_so=$$('main>section').map(e=>e.offsetTop)};W.s=0;
+function upS(){if(!_so.length)_ms();const y=W.p*(document.documentElement.scrollHeight-innerHeight);let i=0;while(i<_so.length-2&&y>=_so[i+1])i++;W.s=clamp(i+(y-_so[i])/((_so[i+1]-_so[i])||1),0,_so.length-1)}
+addEventListener('resize',_ms);addEventListener('load',_ms);
+const fadeEls=[];function fades(){const v=innerHeight;fadeEls.forEach(d=>{const r=d.parentNode.getBoundingClientRect();d.style.opacity=seg(r.bottom/v,.5,.8)*(1-seg(r.top/v,.3,.62))})}
+// full-screen fragment shader
+function screen(frag,U,frame,o={}){U.R={value:new THREE.Vector2(1,1)};U.T={value:0};U.P={value:0};U.S={value:0};U.M={value:new THREE.Vector2()};
+ stage(Object.assign({canvas:$('#c'),setup({scene,renderer}){renderer.toneMapping=0;renderer.outputEncoding=THREE.LinearEncoding;const m=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({depthTest:false,uniforms:U,vertexShader:'void main(){gl_Position=vec4(position.xy,0.,1.);}',fragmentShader:'precision highp float;uniform vec2 R,M;uniform float T,P,S;'+frag}));m.frustumCulled=false;scene.add(m);this._r=renderer},frame(t,dt){this._r.getDrawingBufferSize(U.R.value);U.T.value=t;U.P.value=W.p;U.S.value=W.s;U.M.value.set(W.x,W.y);frame&&frame(t,dt)}},o))}
+const tex2=(w,h,f,rep)=>{const c=document.createElement('canvas');c.width=w;c.height=h;f(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;if(rep){t.wrapS=t.wrapT=THREE.RepeatWrapping}return t};
+function finish(){
+  fadeEls.push(...$$('section.s>div'));
+  const hd=$('.top');if(hd&&!hd.dataset.keep){let ly=scrollY;addEventListener('scroll',()=>{const y=scrollY,d=y-ly;if(Math.abs(d)<6&&y>40)return;ly=y;hd.classList.toggle('hid',y>innerHeight*.12&&(d>0||rawP()>.93))},{passive:true});if(rawP()>.1)hd.classList.add('hid');hd.addEventListener('focusin',()=>hd.classList.remove('hid'))}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});$$('.rv').forEach(e=>io.observe(e));
+  $$('form').forEach(f=>f.onsubmit=e=>{e.preventDefault();const b=f.querySelector('button');b.textContent='Sent (concept)';b.disabled=true});
+}
+
+let cam,bike,parts=[],wheels=[],crank,road,dots,o,chain,shadow;const V=(x,y,z=0)=>new THREE.Vector3(x,y,z);
+stage({canvas:$('#c'),fov:32,exposure:1.05,shadows:true,setup({scene,camera,renderer}){cam=camera;o=new THREE.Object3D();scene.background=new THREE.Color('#e9e4da');scene.fog=new THREE.Fog('#e9e4da',22,60);env(scene,renderer,[['#ffffff',0,9,2,9,3,.2,2.4],['#ffffff',-8,3,5,2,6,.2,1.6],['#ffd0b0',9,1,3,1.5,6,.2,1.4],['#20242a',0,-8,0,10,10,.2,1]],'#8d8983');
+ const C=c=>new THREE.Color(c).convertSRGBToLinear(),M=(c,m,r)=>new THREE.MeshStandardMaterial({color:C(c),metalness:m,roughness:r});const paint=new THREE.MeshPhysicalMaterial({color:C('#c22f08'),metalness:.25,roughness:.32,clearcoat:1,clearcoatRoughness:.08}),al=M('#c9ced3',1,.24),blk=M('#17191c',.1,.6),rub=M('#1c1c1e',0,.85),lea=M('#6b3d1f',0,.6),tan=M('#b98a52',0,.75);
+ bike=new THREE.Group();scene.add(bike);const tube=(a,b,r,m,r2)=>{const d=b.clone().sub(a),k=new THREE.Mesh(new THREE.CylinderGeometry(r2||r,r,d.length(),22),m);k.position.copy(a).add(b).multiplyScalar(.5);k.quaternion.setFromUnitVectors(V(0,1,0),d.normalize());k.castShadow=true;return k};const part=(dir,ro,at,...ms)=>{const g=new THREE.Group();ms.forEach(m=>g.add(m));bike.add(g);g.userData={d:V(...dir),r:V(...ro),at,i:parts.length};parts.push(g);return g};
+ const RA=V(-2.05,0),FA=V(2.15,0),BB=V(-.28,-.22),ST=V(-.86,1.78),HT=V(1.36,1.9),HB=V(1.52,1.38);
+ part([-.2,1.3,1.4],[.4,.5,.2],.35,tube(BB,ST,.07,paint),tube(ST.clone().lerp(BB,.04),HT.clone().lerp(HB,.25),.07,paint),tube(BB,HB.clone().lerp(HT,.15),.078,paint),tube(HB,HT,.09,paint),...[-1,1].flatMap(s=>[tube(V(BB.x,BB.y,s*.08),V(RA.x,RA.y,s*.17),.036,paint),tube(V(ST.x+.05,ST.y-.08,s*.06),V(RA.x,RA.y,s*.17),.032,paint)]),(()=>{const m=new THREE.Mesh(new THREE.CylinderGeometry(.115,.115,.28,24),paint);m.rotation.x=Math.PI/2;m.position.copy(BB);return m})());
+ part([2.2,.7,-.8],[.2,-.6,.4],.5,...[-1,1].map(s=>{const c=new THREE.CatmullRomCurve3([V(1.55,1.36,s*.11),V(1.66,.95,s*.15),V(1.86,.45,s*.16),V(2.15,0,s*.16)]);const m=new THREE.Mesh(new THREE.TubeGeometry(c,30,.045,12),paint);m.castShadow=true;return m}),tube(V(1.55,1.36,-.15),V(1.55,1.36,.15),.07,paint));
+ const wheel=(p,dir,at)=>{const g=new THREE.Group(),sp=[];const R=1.32;g.add(Object.assign(new THREE.Mesh(new THREE.TorusGeometry(R+.07,.085,18,120),rub)),new THREE.Mesh(new THREE.TorusGeometry(R+.012,.052,8,120),tan),new THREE.Mesh(new THREE.TorusGeometry(R-.05,.062,14,120),al));g.children.forEach(m=>m.castShadow=true);const hub=new THREE.Mesh(new THREE.CylinderGeometry(.075,.075,.36,20),al);hub.rotation.x=Math.PI/2;g.add(hub);[-1,1].forEach(s=>{const f=new THREE.Mesh(new THREE.CylinderGeometry(.16,.16,.03,28),al);f.rotation.x=Math.PI/2;f.position.z=s*.13;g.add(f)});
+  const N=32,im=new THREE.InstancedMesh(new THREE.CylinderGeometry(.011,.011,1,6),al,N);for(let i=0;i<N;i++){const s=i%2?1:-1,a=i/N*6.283,h=a+(i%4<2?1:-1)*1.15;sp.push([V(Math.cos(h)*.15,Math.sin(h)*.15,s*.13),V(Math.cos(a)*(R-.07),Math.sin(a)*(R-.07),0)])}im.frustumCulled=false;im.castShadow=true;g.add(im);const G=part(dir,[.3,.8,0],at,g);G.userData.p=p;g.position.copy(p);wheels.push({g,im,sp,at});return g};
+ wheel(RA,[-2.4,.4,1.2],.62);wheel(FA,[2.6,.2,1.5],.72);
+ const cas=[];for(let i=0;i<6;i++){const m=new THREE.Mesh(new THREE.CylinderGeometry(.34-i*.035,.34-i*.035,.02,30),al);m.rotation.x=Math.PI/2;m.position.set(RA.x,RA.y,.16+i*.034);cas.push(m)}part([-2.2,-.5,2.6],[.4,.8,.3],.78,...cas);
+ crank=new THREE.Group();const ch=new THREE.Mesh(new THREE.TorusGeometry(.44,.035,6,44),al);crank.add(ch);for(let i=0;i<5;i++){const a=i/5*6.283;crank.add(tube(V(0,0,0),V(Math.cos(a)*.42,Math.sin(a)*.42,0),.03,al))}[1,-1].forEach(s=>{const z=s>0?.1:-.42;crank.add(tube(V(0,0,z),V(s*.72,0,z),.048,al));const pd=new THREE.Mesh(new THREE.BoxGeometry(.3,.07,.26),blk);pd.position.set(s*.72,0,z+s*.18);pd.castShadow=true;crank.add(pd);crank.userData[s>0?'a':'b']=pd});crank.position.set(BB.x,BB.y,.2);part([.3,-.5,3],[.2,.4,.8],.84,crank);
+ const cp=[];for(let i=0;i<=20;i++){const a=Math.PI/2+i/20*Math.PI;cp.push(V(RA.x+Math.cos(a)*.3,RA.y+Math.sin(a)*.3,.22))}for(let i=0;i<=20;i++){const a=-Math.PI/2+i/20*Math.PI;cp.push(V(BB.x+Math.cos(a)*.46,BB.y+Math.sin(a)*.46,.22))}part([-.6,-1.1,2.4],[.2,.3,0],.9,new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(cp,true),160,.024,6,true),M('#6d5a3c',.9,.35)));
+ const sd=new THREE.Shape();sd.moveTo(-.48,.02);sd.bezierCurveTo(-.5,.26,-.3,.24,-.12,.1);sd.bezierCurveTo(.1,.05,.3,.07,.52,.05);sd.bezierCurveTo(.58,0,.52,-.05,.3,-.05);sd.bezierCurveTo(0,-.1,-.3,-.14,-.48,.02);const sg=new THREE.ExtrudeGeometry(new THREE.Shape([[-.46,.3],[-.5,0],[-.46,-.3],[-.2,-.22],[.1,-.09],[.5,-.05],[.56,0],[.5,.05],[.1,.09],[-.2,.22]].map(p=>new THREE.Vector2(...p))),{depth:.06,bevelEnabled:true,bevelSize:.05,bevelThickness:.05,bevelSegments:4});sg.rotateX(-Math.PI/2);const sm=new THREE.Mesh(sg,lea);sm.position.set(-1.0,2.28,0);sm.castShadow=true;part([-1.2,2,.2],[.5,.8,.6],.42,sm,tube(ST,V(-1.0,2.28),.048,al));
+ const hc=s=>new THREE.CatmullRomCurve3([V(1.62,2.16,0),V(1.6,2.18,s*.34),V(1.66,2.18,s*.46),V(1.98,2.16,s*.48),V(2.14,2.0,s*.49),V(2.08,1.76,s*.5),V(1.8,1.68,s*.5)]);part([1.4,1.9,.6],[.4,.9,-.4],.55,...[-1,1].map(s=>{const m=new THREE.Mesh(new THREE.TubeGeometry(hc(s),50,.042,12),lea);m.castShadow=true;return m}),...[-1,1].map(s=>tube(V(2.08,2.12,s*.49),V(2.2,1.74,s*.49),.03,al)),tube(V(1.35,1.95),V(1.32,2.14),.06,al),tube(V(1.32,2.14),V(1.63,2.17),.052,al));
+ bike.position.y=1.4;const gd=new THREE.Mesh(new THREE.PlaneGeometry(200,60),new THREE.ShadowMaterial({opacity:.24}));gd.rotation.x=-Math.PI/2;gd.position.y=-.01;gd.receiveShadow=true;scene.add(gd);
+ dots=new THREE.InstancedMesh(new THREE.BoxGeometry(2.2,.004,.14),new THREE.MeshBasicMaterial({color:'#b9b1a2'}),40);dots.frustumCulled=false;scene.add(dots);
+ const sun=new THREE.DirectionalLight('#fff6ea',1.7);sun.position.set(-4,9,6);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-8,right:8,top:8,bottom:-4});sun.shadow.bias=-.0006;sun.shadow.normalBias=.03;sun.shadow.radius=5;scene.add(sun,new THREE.HemisphereLight('#fff','#b5a894',.3))},
+frame(t,dt){const S=W.s,mob=W.mob,as=clamp(S/2.2),ride=ease(seg(S,2.65,3.2));this.x=(this.x||0)+dt*ride*7;
+ parts.forEach((g,i)=>{const q=1-ease(seg(as,g.userData.at-.34,g.userData.at)),u=g.userData,fl=Math.sin(t*.8+i*1.9)*.09*q;g.position.copy(u.d).multiplyScalar(q*(mob?.7:.82));g.position.y+=fl;const c=.9;g.rotation.set(u.r.x*q*c,u.r.y*q*c,u.r.z*q*c+fl*.3)});
+ wheels.forEach((w,k)=>{const lc=ease(seg(S,.15+k*.15,.95+k*.15));w.sp.forEach((s,i)=>{const kk=ease(clamp(lc*2-i/32)),q=1-kk;const a=s[0].clone(),b=s[1].clone(),m=a.clone().add(b).multiplyScalar(.5),d=b.sub(a);m.multiplyScalar(1+q*1.3);m.z+=q*(i%2?1.2:-1.2);o.position.copy(m);o.quaternion.setFromUnitVectors(V(0,1,0),d.clone().normalize());o.scale.set(1,d.length()*(.55+.45*kk),1);o.updateMatrix();w.im.setMatrixAt(i,o.matrix)});w.im.instanceMatrix.needsUpdate=true;const wob=(1-seg(S,1.1,1.8))*.09*lc;w.g.rotation.set(wob*Math.sin(t*3.2),wob*Math.cos(t*3.2),-this.x/1.39-(1-ride)*t*.5*seg(S,.6,1.4))});
+ crank.rotation.z=-this.x/1.39*.55-t*.15*(1-ride);['a','b'].forEach(k=>crank.userData[k].rotation.z=-crank.rotation.z);
+ for(let i=0;i<40;i++){const n=ride;o.position.set(((i*4.2-this.x)%84+126)%84-42,0,.9);o.rotation.set(0,0,0);o.scale.set(n+.0001,1,1);o.updateMatrix();dots.setMatrixAt(i,o.matrix)}dots.instanceMatrix.needsUpdate=true;
+ bike.rotation.z=Math.sin(t*2)*.008*ride;bike.position.y=1.4+(1-ease(seg(as,.3,.9)))*.25;
+ const an=lerp(lerp(.55,-.25,ease(seg(S,.4,1.3))),lerp(.45,.12,ride),ease(seg(S,1.4,2.2)))+W.x*.28,D=lerp(lerp(17,11.6,ease(seg(S,.5,1.2))),12.8,ease(seg(S,2,2.8)))*(mob?1.55:1);cam.position.set(Math.sin(an)*D,2.2+W.y*.7+(1-as)*.8,Math.cos(an)*D);cam.lookAt(0,1.7,0);const sd=S<1?lerp(1,-1,ease(seg(S,.4,.9))):S<2?lerp(-1,1,ease(seg(S,1.4,1.9))):lerp(1,0,ease(seg(S,2.3,2.9)));const vw=innerWidth,vh=innerHeight;cam.setViewOffset(vw,vh,mob?0:-sd*vw*.2,mob?lerp(vh*.1,-vh*.12,ease(seg(S,.4,.8))):lerp(0,-vh*.13,ease(seg(S,2.4,3)))-vh*.05*seg(S,.6,1),vw,vh)}});
+finish();
 </script></body></html>

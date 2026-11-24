@@ -24,153 +24,78 @@ section{content-visibility:auto;contain-intrinsic-size:auto 900px}
 .lite *{text-shadow:none!important}
 .lite .cloud,.lite .beam{filter:none!important}
 .lite body::before,.lite body::after,.lite .grain{display:none!important}
-</style><!--/swx-perf--><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
-<title>FlySynergy | Fairoaks Flight Centre, Surrey</title>
+</style><!--/swx-perf--><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>FlySynergy | Fairoaks Flight Centre, Surrey</title>
 <meta name="description" content="Flying lessons, flight experiences from £95, PPL training and aircraft hire at Fairoaks Airport, just off the M25 J11.">
-<link rel="icon" href="/flysynergy/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=B612+Mono&display=swap" rel="stylesheet">
-<style>
-:root{--sky1:#2c6fd1;--sky2:#9fd0ff;--earth1:#7a5a34;--earth2:#3e2c18;--ink:#0b1424;--txt:#f4f8ff;--hud:#7dffb2;--amber:#ffbf3c;--paper:#f3f6fb}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font:400 17px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}.w{width:min(1220px,100% - 40px);margin:0 auto}.mono{font-family:'B612 Mono',monospace}
-.glass{background:linear-gradient(150deg,rgba(255,255,255,.28),rgba(255,255,255,.06));backdrop-filter:blur(16px) saturate(170%);-webkit-backdrop-filter:blur(16px) saturate(170%);border:1px solid rgba(255,255,255,.4);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6),inset 0 -2px 8px rgba(0,0,0,.15),0 24px 50px -24px rgba(0,0,0,.5)}
-nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;width:min(1220px,100% - 24px);display:flex;align-items:center;gap:22px;padding:10px 10px 10px 22px;border-radius:999px;color:#fff}
-.brand{margin-right:auto;font:800 20px/1 Manrope;letter-spacing:-.02em}.brand small{font:400 11px 'B612 Mono';opacity:.75;margin-left:8px}
-nav .lk{display:flex;gap:22px;font-size:14px;font-weight:600}nav .lk a{opacity:.8}nav .lk a:hover{opacity:1}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font:700 15px Manrope;transition:transform .3s}.btn:hover{transform:translateY(-2px)}
-.btn.y{background:linear-gradient(180deg,#ffd36b,var(--amber));color:#1b1300;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -3px 0 rgba(0,0,0,.18),0 14px 30px -12px rgba(255,191,60,.8)}
-.btn.g{color:#fff}
-/* HERO: you are the pilot. The horizon banks with your pointer, altitude climbs as you scroll. */
-.hero{position:relative;height:100vh;min-height:660px;overflow:hidden;color:#fff}
-.world{position:absolute;inset:-60%;transform:rotate(var(--bank,0deg)) translateY(var(--pitch,0px));transition:transform .25s ease-out}
-.sky{position:absolute;inset:0 0 50% 0;background:linear-gradient(180deg,#0f3d8f 0%,var(--sky1) 50%,var(--sky2) 100%)}
-.earth{position:absolute;inset:50% 0 0 0;background:linear-gradient(180deg,#6f8f4a,#4c6a30 20%,#3b4f25 60%,#26331a)}
-.earth::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(80deg,rgba(255,255,255,.04) 0 40px,transparent 40px 120px),repeating-linear-gradient(-30deg,rgba(0,0,0,.08) 0 60px,transparent 60px 160px)}
-.hz{position:absolute;left:0;right:0;top:50%;height:2px;background:rgba(255,255,255,.8);box-shadow:0 0 30px 6px rgba(255,255,255,.35)}
-.cloud{position:absolute;border-radius:999px;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,0));filter:blur(4px);animation:drift linear infinite}
-@keyframes drift{from{transform:translateX(110vw)}to{transform:translateX(-60vw)}}
-.reticle{position:absolute;left:50%;top:50%;width:200px;height:40px;transform:translate(-50%,-50%);pointer-events:none;z-index:2}
-.reticle::before,.reticle::after{content:"";position:absolute;top:50%;height:4px;width:70px;background:var(--amber);border-radius:3px;box-shadow:0 0 10px rgba(255,191,60,.7)}.reticle::before{left:0}.reticle::after{right:0}
-.reticle i{position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px;border-radius:50%;background:var(--amber)}
-.tape{position:absolute;top:50%;transform:translateY(-50%);width:76px;height:300px;border-radius:14px;overflow:hidden;z-index:3;font:400 13px 'B612 Mono';color:var(--hud)}
-.tape.l{left:clamp(12px,4vw,48px)}.tape.r{right:clamp(12px,4vw,48px)}
-.tape .scale{position:absolute;left:0;right:0;top:50%;transform:translateY(var(--o,0px))}.tape .scale div{height:30px;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(125,255,178,.25)}
-.tape .read{position:absolute;left:4px;right:4px;top:50%;height:34px;margin-top:-17px;border-radius:8px;background:rgba(0,0,0,.65);border:1px solid var(--hud);display:grid;place-items:center;font:400 17px 'B612 Mono';color:#fff;z-index:2}
-.tape small{position:absolute;top:6px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.1em;z-index:3}
-.copy{position:absolute;left:0;right:0;bottom:clamp(30px,8vh,90px);text-align:center;z-index:4;padding:0 20px}
-.kick{font:400 12px 'B612 Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--hud)}
-h1{font:800 clamp(50px,7.6vw,124px)/.9 Manrope;letter-spacing:-.05em;margin:14px 0;text-shadow:0 10px 40px rgba(0,0,0,.35)}
-h1 .wd{display:inline-block;opacity:0;transform:translateY(40px) rotate(-6deg);animation:to .9s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(.2s + var(--i)*.1s)}@keyframes to{to{opacity:1;transform:none}}
-.copy p{max-width:620px;margin:0 auto;font-size:18px;opacity:.92;text-shadow:0 2px 12px rgba(0,0,0,.4)}
-.copy .acts{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}
-.atis{position:absolute;top:96px;left:50%;transform:translateX(-50%);z-index:4;padding:10px 18px;border-radius:999px;font:400 12.5px 'B612 Mono';white-space:nowrap}.atis b{color:var(--hud);font-weight:400}
-.hint{position:absolute;right:clamp(12px,4vw,48px);bottom:24px;font:400 11px 'B612 Mono';opacity:.7;z-index:4}
-/* sections */
-section{padding:120px 0}
-.sk{font:400 12px 'B612 Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--sky1)}
-h2{font:800 clamp(42px,5.4vw,84px)/.95 Manrope;letter-spacing:-.05em;margin:12px 0 50px;max-width:960px}h2 em{font-style:normal;color:var(--sky1)}
-.rv{opacity:0;transform:translateY(40px);transition:opacity .9s,transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0)*.08s)}.rv.in{opacity:1;transform:none}
-.exp{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
-.ticket{position:relative;border-radius:24px;background:#fff;box-shadow:0 30px 60px -30px rgba(11,20,36,.4);display:grid;grid-template-columns:1fr 160px;overflow:hidden}
-.ticket .main{padding:34px}.ticket .stub{background:var(--ink);color:#fff;padding:28px 20px;display:flex;flex-direction:column;justify-content:space-between;border-left:2px dashed rgba(255,255,255,.35)}
-.ticket h3{font:800 34px/1 Manrope;letter-spacing:-.04em}.ticket .mono{font-size:12px;color:#6b7a94;letter-spacing:.1em}
-.ticket .opts{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.ticket label{cursor:pointer}.ticket input{display:none}.ticket span.o{display:inline-block;padding:11px 16px;border-radius:12px;border:1.5px solid #d6deea;font-weight:700;font-size:14px;transition:all .25s}.ticket input:checked+span.o{background:var(--sky1);border-color:var(--sky1);color:#fff}
-.ticket .stub b{font:800 40px/1 Manrope}.ticket .stub small{font:400 11px 'B612 Mono';opacity:.7;letter-spacing:.08em}
-.ticket .bar{height:46px;background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 4px,#fff 4px 5px,transparent 5px 9px);opacity:.8}
-.photo{border-radius:24px;overflow:hidden;position:relative;min-height:320px}.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.photo .cap{position:absolute;left:14px;bottom:14px;padding:10px 14px;border-radius:12px;color:#fff;font:400 12px 'B612 Mono'}
-.fleet{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.ac{border-radius:20px;padding:24px;background:#fff;box-shadow:0 20px 40px -26px rgba(11,20,36,.4);transition:transform .4s}.ac:hover{transform:translateY(-6px) rotate(-1deg)}
-.ac svg{width:100%;height:90px;color:var(--sky1)}.ac h3{font:800 22px Manrope;letter-spacing:-.03em;margin-top:10px}.ac p{font:400 12px 'B612 Mono';color:#6b7a94}
-.train{background:var(--ink);color:#fff}.train h2 em{color:var(--hud)}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.st{padding:28px;border-radius:20px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
-.st .n{font:400 12px 'B612 Mono';color:var(--hud)}.st h3{font:800 24px/1.05 Manrope;letter-spacing:-.03em;margin:30px 0 8px}.st p{color:#a9b6cc;font-size:15px}
-.why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
-.why div{padding:26px;border-top:2px solid var(--hud)}.why b{font:800 22px Manrope;display:block;margin-bottom:6px}.why span{color:#a9b6cc;font-size:15px}
-.visit{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.card{border-radius:24px;padding:34px;background:#fff;box-shadow:0 30px 60px -30px rgba(11,20,36,.4)}
-.card .big{display:block;font:800 clamp(38px,4vw,56px)/1 Manrope;letter-spacing:-.04em;color:var(--sky1)}
-.wx{display:flex;align-items:center;gap:10px;margin-top:16px;font:400 13px 'B612 Mono'}.wx i{width:9px;height:9px;border-radius:50%;background:#c33}.wx.is-open i{background:#22b35e;box-shadow:0 0 8px #22b35e}
-form{display:grid;gap:14px}label{display:grid;gap:6px;font:400 11px 'B612 Mono';letter-spacing:.1em;text-transform:uppercase;color:#6b7a94}
-input,select,textarea{font:500 16px Manrope;padding:12px 14px;border-radius:12px;border:1.5px solid #d6deea;outline:none}input:focus,select:focus{border-color:var(--sky1)}
-form button{justify-self:start;border:0;cursor:pointer}form small{font-size:12px;color:#6b7a94}
-.map{margin-top:22px;height:340px;border-radius:24px;overflow:hidden}.map iframe{width:100%;height:100%;border:0}
-footer{background:var(--ink);color:#fff;padding:70px 0 110px}footer .fw{font:800 clamp(64px,13vw,200px)/.85 Manrope;letter-spacing:-.06em}footer .fw span{color:var(--hud)}footer p{font:400 12px 'B612 Mono';opacity:.6;margin-top:20px}
-.swx{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:99;padding:9px 16px;border-radius:999px;font:400 12px 'B612 Mono';background:rgba(11,20,36,.55);color:#fff;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2)}
-@media(max-width:960px){nav .lk{display:none}.tape{display:none}.exp,.visit{grid-template-columns:1fr}.fleet,.steps,.why{grid-template-columns:1fr 1fr}.atis{display:none}}
-@media(max-width:560px){.fleet,.steps,.why{grid-template-columns:1fr}.ticket{grid-template-columns:1fr}.ticket .stub{border-left:0;border-top:2px dashed rgba(255,255,255,.35)}nav .btn{display:none}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}.rv{opacity:1;transform:none}h1 .wd{opacity:1;transform:none}}
-</style></head><body>
-<nav class="glass"><a class="brand" href="#">FlySynergy<small>Fairoaks · EGTF</small></a><div class="lk"><a href="#experiences">Experiences</a><a href="#fleet">Fleet</a><a href="#training">Training</a><a href="#visit">Visit</a></div><a class="btn y" href="tel:+441276858075">01276 858 075</a></nav>
-<header class="hero" id="hero">
- <div class="world" id="world"><div class="sky"></div><div class="earth"></div><div class="hz"></div></div>
- <div id="clouds"></div>
- <div class="reticle"><i></i></div>
- <div class="tape l glass"><small>KT</small><div class="scale" id="spd"></div><div class="read" id="spdR">0</div></div>
- <div class="tape r glass"><small>FT</small><div class="scale" id="alt"></div><div class="read" id="altR">0</div></div>
- <div class="atis glass">FAIROAKS · <b id="atis">OPEN 0900 to 1800, 7 DAYS</b></div>
- <div class="copy"><div class="kick">Fairoaks Airport · just off the M25 J11 · Surrey</div>
-  <h1><span class="wd" style="--i:0">Take</span> <span class="wd" style="--i:1">the</span> <span class="wd" style="--i:2">controls.</span></h1>
-  <p>Flight experiences from £95, PPL training and aircraft hire from a friendly, professional school at London's best kept secret.</p>
-  <div class="acts"><a class="btn y" href="#experiences">Book a trial lesson</a><a class="btn g glass" href="#training">Learn to fly &rarr;</a></div></div>
- <div class="hint">Move your mouse to bank · scroll to climb</div>
-</header>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;600;800&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{overflow-x:hidden;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit;color:inherit}.swx{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:90;padding:8px 15px;border-radius:99px;font:700 12px/1.3 system-ui,sans-serif;white-space:nowrap;background:rgba(12,14,18,.82);color:#fff;border:1px solid rgba(255,255,255,.25)}:focus-visible{outline:3px solid currentColor;outline-offset:3px}form small{display:block}.top{transition:opacity .35s,transform .35s}.top.hid{opacity:0;transform:translateY(-24px);pointer-events:none}</style><style>body{background:var(--bg);color:var(--fg);font:400 18px/1.6 var(--fb)}#c{position:fixed;inset:0;width:100%;height:100%}.nogl #c{background:linear-gradient(160deg,var(--ac),var(--bg) 70%)}
+.top{position:fixed;z-index:20;top:0;left:0;right:0;padding:26px 4vw;display:flex;justify-content:space-between;align-items:center;gap:20px;font:var(--ft,700 18px/1.2 var(--fb))}.top a{white-space:nowrap}
+main{position:relative;z-index:5}.s{min-height:165vh;padding:0 4vw}.s>div{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:110px 0 13vh}.s.t>div{justify-content:flex-start}.s.m>div{justify-content:center}.s.r>div{align-items:flex-end;text-align:right}.s.c>div{align-items:center;text-align:center}
+h1{font:var(--h1);letter-spacing:var(--ls,-.03em);text-wrap:balance}h2{font:var(--h2);letter-spacing:var(--ls,-.03em);max-width:14ch;text-wrap:balance}.s p{margin-top:20px;max-width:30em;font-size:clamp(17px,1.35vw,21px)}
+.ct{position:relative;min-height:100vh;padding:110px 4vw 100px;display:grid;grid-template-columns:1.15fr 1fr;gap:5vw;align-items:center;background:var(--cb,transparent)}.ct .tel{display:block;font:var(--h2);font-size:clamp(34px,4.6vw,78px);line-height:1.05;letter-spacing:var(--ls,-.03em);color:var(--ac);white-space:nowrap;margin:24px 0 16px}
+form{display:grid;gap:14px;padding:var(--fp,0);background:var(--fbg,none);color:var(--ffg,inherit)}label{display:grid;gap:5px;font-size:15px;font-weight:600}form input,form select{width:100%;padding:14px;font-size:16px;border:var(--ib,1px solid rgba(255,255,255,.4));background:var(--ibg,rgba(0,0,0,.4));border-radius:var(--ir,0)}option{color:#111}form button{border:0;padding:18px;background:var(--ac);color:var(--bt,#111);font-weight:800;font-size:17px;border-radius:var(--ir,0);cursor:pointer}form button:hover{filter:brightness(1.15)}small{opacity:.85}
+@media(max-width:760px){body{font-size:17px}.s,.ct{padding-left:20px;padding-right:20px}.s>div{padding-bottom:92px}.ct{grid-template-columns:1fr;padding-top:80px;align-content:center}.top{padding:20px;font-size:15px}.ct .tel{font-size:clamp(26px,9.4vw,44px)}}</style><style>:root{--bg:#0e2a4a;--fg:#fff;--ac:#ffd24a;--fb:Sora,sans-serif;--h1:800 clamp(54px,10vw,180px)/.88 Sora;--h2:800 clamp(42px,6.6vw,118px)/.94 Sora;--ls:-.06em;--cb:linear-gradient(transparent,rgba(30,14,40,.66) 34%);--ir:12px}main{text-shadow:0 2px 26px rgba(10,30,60,.6)}.hud{position:fixed;z-index:8;right:4vw;top:50%;transform:translateY(-50%);text-align:right;font:600 clamp(26px,3.4vw,56px)/1 Sora;letter-spacing:-.05em;font-variant-numeric:tabular-nums;text-shadow:0 2px 20px rgba(10,30,60,.6);transition:opacity .4s}.hud small{display:block;font:300 14px/1 Sora;letter-spacing:0;margin:8px 0 22px}body.deep .hud{opacity:0}@media(max-width:760px){.hud{top:84px;transform:none;display:flex;gap:26px;right:20px;font-size:25px}}</style></head><body><canvas id="c"></canvas><div style="position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(10,40,90,.5),transparent 18%),linear-gradient(40deg,rgba(6,24,52,.72),rgba(6,24,52,.3) 32%,transparent 55%)"></div>
+<div class="top"><a href="#top">FlySynergy</a><a href="tel:+441276858075">01276 858 075</a></div><div class="hud" aria-hidden="true"><div><b id="al">0</b><small>feet</small></div><div><b id="kt">0</b><small>knots</small></div></div><main id="top">
+<section class="s"><div><h1>You have<br>control.</h1><p>Flight experiences from £95 at Fairoaks Airport, just off the M25 J11. Scroll for take-off.</p></div></section>
+<section class="s"><div><h2>Surrey, tilted.</h2><p>Half, three-quarter or full hour trial lessons, hands on the controls. Or land away at Goodwood.</p></div></section>
+<section class="s"><div><h2>Into the white.</h2><p>PPL training, ground exams, then instrument and complex aircraft training.</p></div></section>
+<section class="s"><div><h2>And out on top.</h2><p>Self-hire with fuel, VAT and landings at Fairoaks included. No hidden charges.</p></div></section>
+<section class="ct"><div><h2>Cleared for take-off.</h2><a class="tel" href="tel:+441276858075">01276 858 075</a><a href="mailto:info@flysynergy.com">info@flysynergy.com</a><p>Fairoaks Airport, Chobham, Woking, Surrey GU24 8HX<br>Monday to Sunday, 09:00 to 18:00</p></div><form><label>Name<input required></label><label>Phone<input type="tel" required></label><label>Flight<select><option>Half hour</option><option>Three-quarter hour</option><option>One hour</option><option>Goodwood landaway</option><option>PPL training</option><option>Aircraft hire</option></select></label><button>Request a date</button><small>Design concept: this form does not send anything yet. The flight and readings are illustrations.</small></form></section></main><a class="swx" href="https://swiftrix.eu" target="_blank" rel="noopener">Design concept by Swiftrix</a><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><script>const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),lerp=(a,b,k)=>a+(b-a)*k,seg=(v,a,b)=>clamp((v-a)/(b-a)),ease=k=>k*k*(3-2*k);
+const W={p:0,x:0,y:0,tx:0,ty:0,touched:false,rm:matchMedia('(prefers-reduced-motion: reduce)').matches,mob:innerWidth<760};
+const rawP=()=>{const h=document.documentElement.scrollHeight-innerHeight;return h>0?clamp(scrollY/h):0};W.p=rawP();
+addEventListener('pointermove',e=>{W.touched=true;W.tx=e.clientX/innerWidth*2-1;W.ty=1-e.clientY/innerHeight*2},{passive:true});
+function stage(opt){
+  const cvs=opt.canvas;let r;
+  try{if(!window.THREE)throw 0;r=new THREE.WebGLRenderer({canvas:cvs,antialias:innerWidth>760,powerPreference:'high-performance'})}catch(e){document.body.classList.add('nogl');return}
+  let dpr=Math.min(devicePixelRatio||1,opt.dpr||(W.mob?1.25:1.6));const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(opt.fov||45,1,.1,400);
+  r.outputEncoding=THREE.sRGBEncoding;r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=opt.exposure||1;
+  if(opt.shadows){r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap}
+  let cw=0,ch=0;const size=()=>{const w=cvs.clientWidth,h=cvs.clientHeight;if(w===cw&&h===ch)return;cw=w;ch=h;W.mob=innerWidth<760;r.setPixelRatio(dpr);r.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();opt.resize&&opt.resize(w,h)};
+  opt.setup({scene,camera,renderer:r});if(opt.lin){const sn=new Set();scene.traverse(o=>[].concat(o.material||[]).forEach(m=>{if(!sn.has(m)&&(m.isMeshStandardMaterial||m.isMeshBasicMaterial)){sn.add(m);m.color.convertSRGBToLinear();m.emissive&&m.emissive.convertSRGBToLinear()}}))}size();
+  let last=0,acc=0,n=0,T=0;
+  const loop=now=>{requestAnimationFrame(loop);if(document.hidden){last=0;return}const ms=Math.min(60,now-(last||now-16));last=now;const dt=ms/1000;if(!W.rm)T+=dt;
+    acc+=ms;if(++n===40){const a=acc/n;acc=n=0;if(a>30&&dpr>.6){dpr=Math.max(.6,dpr*.8);cw=0}}
+    size();const k=W.rm?1:1-Math.exp(-dt*5);W.p+=(rawP()-W.p)*k;W.x+=(W.tx-W.x)*k;W.y+=(W.ty-W.y)*k;upS();fades();opt.frame(T,dt);r.render(scene,camera)};
+  requestAnimationFrame(loop);
+}
+// studio reflections, so metal looks like metal
+function env(scene,r,strips,base){const s=new THREE.Scene();s.background=new THREE.Color(base||'#0b0e16');strips.forEach(a=>{const m=new THREE.Mesh(new THREE.BoxGeometry(a[4]||4,a[5]||4,a[6]||.2),new THREE.MeshBasicMaterial({color:new THREE.Color(a[0]).multiplyScalar(a[7]||4),side:2,toneMapped:false}));m.position.set(a[1],a[2],a[3]);m.lookAt(0,0,0);s.add(m)});const g=new THREE.PMREMGenerator(r);scene.environment=g.fromScene(s,.03).texture;g.dispose()}
+// W.s: which section we are in, as a smooth number (0 = first pinned, 1 = second ...)
+let _so=[];const _ms=()=>{_so=$$('main>section').map(e=>e.offsetTop)};W.s=0;
+function upS(){if(!_so.length)_ms();const y=W.p*(document.documentElement.scrollHeight-innerHeight);let i=0;while(i<_so.length-2&&y>=_so[i+1])i++;W.s=clamp(i+(y-_so[i])/((_so[i+1]-_so[i])||1),0,_so.length-1)}
+addEventListener('resize',_ms);addEventListener('load',_ms);
+const fadeEls=[];function fades(){const v=innerHeight;fadeEls.forEach(d=>{const r=d.parentNode.getBoundingClientRect();d.style.opacity=seg(r.bottom/v,.5,.8)*(1-seg(r.top/v,.3,.62))})}
+// full-screen fragment shader
+function screen(frag,U,frame,o={}){U.R={value:new THREE.Vector2(1,1)};U.T={value:0};U.P={value:0};U.S={value:0};U.M={value:new THREE.Vector2()};
+ stage(Object.assign({canvas:$('#c'),setup({scene,renderer}){renderer.toneMapping=0;renderer.outputEncoding=THREE.LinearEncoding;const m=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({depthTest:false,uniforms:U,vertexShader:'void main(){gl_Position=vec4(position.xy,0.,1.);}',fragmentShader:'precision highp float;uniform vec2 R,M;uniform float T,P,S;'+frag}));m.frustumCulled=false;scene.add(m);this._r=renderer},frame(t,dt){this._r.getDrawingBufferSize(U.R.value);U.T.value=t;U.P.value=W.p;U.S.value=W.s;U.M.value.set(W.x,W.y);frame&&frame(t,dt)}},o))}
+const tex2=(w,h,f,rep)=>{const c=document.createElement('canvas');c.width=w;c.height=h;f(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;if(rep){t.wrapS=t.wrapT=THREE.RepeatWrapping}return t};
+function finish(){
+  fadeEls.push(...$$('section.s>div'));
+  const hd=$('.top');if(hd&&!hd.dataset.keep){let ly=scrollY;addEventListener('scroll',()=>{const y=scrollY,d=y-ly;if(Math.abs(d)<6&&y>40)return;ly=y;hd.classList.toggle('hid',y>innerHeight*.12&&(d>0||rawP()>.93))},{passive:true});if(rawP()>.1)hd.classList.add('hid');hd.addEventListener('focusin',()=>hd.classList.remove('hid'))}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});$$('.rv').forEach(e=>io.observe(e));
+  $$('form').forEach(f=>f.onsubmit=e=>{e.preventDefault();const b=f.querySelector('button');b.textContent='Sent (concept)';b.disabled=true});
+}
 
-<section id="experiences"><div class="w"><div class="sk rv">Flight experiences</div><h2 class="rv">Your first flight, <em>from £95.</em></h2>
- <div class="exp">
-  <form class="ticket rv demo"><div class="main"><div class="mono">BOARDING PASS · TRIAL LESSON</div><h3>Pick your flight</h3>
-   <div class="opts"><label><input type="radio" name="d" value="30" checked><span class="o">Half hour</span></label><label><input type="radio" name="d" value="45"><span class="o">Three-quarter hour</span></label><label><input type="radio" name="d" value="60"><span class="o">One hour</span></label><label><input type="radio" name="d" value="gw"><span class="o">Goodwood Landaway</span></label></div>
-   <p style="color:#4a5875;font-size:15px" id="tdesc"></p>
-   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button class="btn y" type="submit">Request a date</button><span class="btn" style="box-shadow:inset 0 0 0 1.5px #d6deea">Gift voucher</span></div></div>
-   <div class="stub"><div><small>FROM</small><b>EGTF</b><small>FAIROAKS</small></div><div><small>FLIGHT</small><b id="tdur">30'</b></div><div class="bar"></div></div></form>
-  <div class="photo rv" style="--i:1"><img src="/flysynergy/p1.jpg" alt="Climbing out of Fairoaks" loading="lazy"><span class="cap glass">Climb-out over Surrey</span></div>
- </div></div></section>
-
-<section id="fleet" style="padding-top:0"><div class="w"><div class="sk rv">Self-hire fleet</div><h2 class="rv">Hire by the hour, <em>blocks off to blocks on.</em></h2>
- <div class="fleet" id="fl"></div>
- <p style="color:#6b7a94;font-size:14px;margin-top:18px" class="rv">Fuel, VAT and landings at Fairoaks are included in our rates. No hidden charges.</p></div></section>
-
-<section class="train" id="training"><div class="w"><div class="sk rv" style="color:var(--hud)">Flight training</div><h2 class="rv">From first flight <em>to final skills test.</em></h2>
- <div class="steps">
-  <div class="st rv"><span class="n">01</span><h3>Trial lesson</h3><p>Half, three-quarter or full hour, hands on the controls.</p></div>
-  <div class="st rv" style="--i:1"><span class="n">02</span><h3>Private Pilot Licence</h3><p>PPL training with our friendly, professional instructors.</p></div>
-  <div class="st rv" style="--i:2"><span class="n">03</span><h3>Ground exams</h3><p>Ground exams for the PPL and IMC.</p></div>
-  <div class="st rv" style="--i:3"><span class="n">04</span><h3>Instrument and complex</h3><p>Instrument training and complex aircraft training.</p></div>
- </div>
- <div class="why"><div class="rv"><b>More time in the air</b><span>No scheduled traffic or jets at Fairoaks, so holding and taxi times are minimal.</span></div><div class="rv" style="--i:1"><b>No hidden charges</b><span>A simple price structure, with fuel, VAT and landings at Fairoaks included.</span></div><div class="rv" style="--i:2"><b>Membership</b><span>Annual, monthly or daily membership of Fairoaks Flight Centre.</span></div></div>
-</div></section>
-
-<section id="visit"><div class="w"><div class="sk rv">Visit</div><h2 class="rv">Drop by for a <em>friendly chat.</em></h2>
- <div class="visit"><div class="card rv"><a class="big" href="tel:+441276858075">01276 858 075</a><a href="mailto:info@flysynergy.com" style="font-weight:700;color:var(--sky1)">info@flysynergy.com</a><p style="margin-top:12px;color:#4a5875">Synergy Aviation Ltd, Fairoaks Airport, Chobham, Woking, Surrey GU24 8HX</p><p style="color:#4a5875">Monday to Sunday, 09:00 to 18:00</p><div class="wx" data-open><i></i><span>Checking</span></div></div>
- <div class="photo rv" style="--i:1"><img src="/flysynergy/p3.jpg" alt="Fairoaks Airport" loading="lazy"><span class="cap glass">Fairoaks Airport · Surrey</span></div></div>
- <div class="map rv"><iframe loading="lazy" title="Map" src="https://www.google.com/maps?q=Fairoaks%20Airport%2C%20Chobham%20GU24%208HX&output=embed"></iframe></div></div></section>
-<footer><div class="w"><div class="fw">Fly<span>Synergy</span></div><p>SYNERGY AVIATION LTD · FAIROAKS AIRPORT, CHOBHAM, SURREY GU24 8HX · +44 1276 858 075</p></div></footer>
-<a class="swx" href="https://swiftrix.eu" target="_blank" rel="noopener">Design concept by Swiftrix</a>
-<script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-// clouds
-$('#clouds').innerHTML=Array.from({length:7},(_,i)=>`<i class="cloud" style="top:${8+Math.random()*40}%;width:${180+Math.random()*260}px;height:${50+Math.random()*50}px;animation-duration:${30+Math.random()*40}s;animation-delay:${-Math.random()*60}s;opacity:${.4+Math.random()*.5}"></i>`).join('');
-// tapes
-const tape=(el,step,n)=>el.innerHTML=Array.from({length:n},(_,i)=>`<div>${(n-1-i)*step}</div>`).join('');tape($('#spd'),10,20);tape($('#alt'),100,40);
-let bank=0,tb=0,pitch=0,tp=0;const hero=$('#hero'),world=$('#world');
-hero.addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;tb=x*-30;tp=y*-60});hero.addEventListener('pointerleave',()=>{tb=0;tp=0});
-(function f(t){bank+=(tb-bank)*.06;pitch+=(tp-pitch)*.06;const idle=RM?0:Math.sin(t/1800)*2;world.style.setProperty('--bank',(bank+idle).toFixed(2)+'deg');
- const climb=Math.min(1,scrollY/innerHeight);world.style.setProperty('--pitch',(pitch+climb*innerHeight*.45).toFixed(1)+'px');
- const alt=Math.round(climb*2500+ (pitch>0?pitch*3:0)),spd=Math.round(65+climb*40+Math.abs(bank));$('#altR').textContent=alt;$('#spdR').textContent=spd;
- $('#alt').style.setProperty('--o',(alt/100*30-1185)+'px');$('#spd').style.setProperty('--o',(spd/10*30-585)+'px');requestAnimationFrame(f)})(0);
-// trial picker
-const TD={30:["Half an hour in the air with an instructor, and you fly.","30'"],45:["Three-quarters of an hour: time to see more of Surrey from above.","45'"],60:["A full hour at the controls with an instructor.","60'"],gw:["Fly to Goodwood and back on the Goodwood Landaway.","GW"]};
-const tsel=()=>{const v=$('.ticket input:checked').value;$('#tdesc').textContent=TD[v][0]+' Gift vouchers available.';$('#tdur').textContent=TD[v][1]};$$('.ticket input').forEach(i=>i.onchange=tsel);tsel();
-// fleet
-const FL=[['Cessna 152','Two-seat trainer'],['Piper PA28 Warrior','Four-seat tourer'],['Piper PA28 Archer','Four-seat tourer'],['Piper PA28R Arrow','Retractable, complex']];
-const plane=hi=>`<svg viewBox="0 0 200 90" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M20 50 L150 46 Q175 46 182 50 Q175 54 150 54 L20 52Z"/>${hi?'<path d="M70 44 L60 30 L120 30 L112 44"/>':'<path d="M60 47 L50 70 L130 70 L118 47"/>'}<path d="M95 40 Q100 30 120 34 L130 44"/><path d="M20 50 L10 30 L28 30 L36 49"/><path d="M182 42 V58"/></svg>`;
-$('#fl').innerHTML=FL.map((f,i)=>`<div class="ac rv" style="--i:${i}">${plane(i===0)}<h3>${f[0]}</h3><p>${f[1].toUpperCase()}</p></div>`).join('');
-// open now (daily 09-18 UK)
-function paint(){const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date()).split(':'),m=(+p[0]%24)*60+ +p[1],o=m>=540&&m<1080;
- $$('[data-open]').forEach(el=>{el.classList.toggle('is-open',o);el.querySelector('span').textContent=o?'Open now until 18:00':'Closed now · opens 09:00'});$('#atis').textContent=o?'OPEN NOW · UNTIL 1800 LOCAL':'CLOSED · OPENS 0900 LOCAL'}paint();setInterval(paint,60000);
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});$$('.rv').forEach(el=>io.observe(el));
-$$('form.demo').forEach(f=>f.onsubmit=e=>{e.preventDefault();const b=f.querySelector('button');b.textContent='Requested (concept)';b.disabled=true});
+const U={A:{value:0},B:{value:0},Z:{value:0},G:{value:0}};let z=0,bank=0;
+screen(`uniform float A,B,Z,G;
+float h(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float a=.5,s=0.;for(int i=0;i<5;i++){s+=a*n(p);p=mat2(1.6,1.2,-1.2,1.6)*p;a*=.5;}return s;}
+vec3 sky(vec3 d,vec3 sd,float g){float y=max(d.y,0.);vec3 c=mix(mix(vec3(.72,.86,.95),vec3(.16,.42,.78),pow(y,.45)),mix(vec3(1.,.62,.36),vec3(.2,.22,.5),pow(y,.4)),g);float s=max(dot(d,sd),0.);c+=mix(vec3(1.,.9,.7),vec3(1.,.55,.25),g)*(pow(s,6.)*.28+pow(s,60.)*.5+smoothstep(.9993,.9997,s)*2.);return c;}
+vec3 ground(vec2 p,float dist){vec2 q=p/90.;q+=.35*vec2(n(q*.7),n(q*.7+9.));vec2 c=floor(q),f=fract(q);float id=h(c);vec2 sc=h(c+3.)>.5?vec2(2.,1.):vec2(1.,2.);vec2 f2=fract(f*sc);id=h(c*7.+floor(f*sc));
+ vec3 k=mix(vec3(.23,.42,.13),vec3(.47,.55,.2),id);k=mix(k,vec3(.78,.66,.3),step(.78,id));k=mix(k,vec3(.42,.3,.19),step(.93,id));float lod=clamp(1.-dist/1500.,0.,1.);float ph=h(c+1.)*6.;k*=1.+lod*.07*sin(dot(p,vec2(cos(ph),sin(ph)))*1.1);k*=.86+.28*fbm(p*.04);
+ vec2 e=min(f2,1.-f2)/sc*90.;float hd=1.-smoothstep(1.2,3.4,min(e.x,e.y)+n(p*.3)*1.5);k=mix(k,vec3(.08,.19,.07),hd*.85);
+ float w=fbm(p*.0042+3.);float tr=smoothstep(.57,.61,w);k=mix(k,vec3(.06,.17,.07)*(.6+.9*n(p*.28)),tr);
+ float rv=abs(p.x-210.+90.*sin(p.y*.004)+40.*sin(p.y*.011));k=mix(k,vec3(.5,.68,.82),1.-smoothstep(13.,16.,rv));
+ float rd=abs(p.x+160.+50.*sin(p.y*.006));k=mix(k,vec3(.62,.6,.56),1.-smoothstep(3.,4.5,rd));
+ // runway
+ vec2 r=vec2(p.x,p.y);float ln=step(-40.,r.y)*step(r.y,1250.);float gr=ln*(1.-smoothstep(58.,62.,abs(r.x)));k=mix(k,vec3(.33,.5,.17)*(.9+.2*n(p*.5)),gr);float ru=ln*(1.-smoothstep(14.5,15.,abs(r.x)));vec3 as=vec3(.23,.24,.26)*(.85+.3*n(p*vec2(1.4,.35)));float mk=(1.-smoothstep(.35,.5,abs(r.x)))*step(.5,fract(r.y/42.))+(1.-smoothstep(.2,.35,abs(abs(r.x)-13.3)))+step(0.,r.y)*step(r.y,24.)*step(.5,fract(r.x/3.4))*step(abs(r.x),12.);as=mix(as,vec3(.74),clamp(mk,0.,1.));return mix(k,as,ru);}
+void main(){vec2 v=(gl_FragCoord.xy-.5*R)/R.y;float cr=cos(B),sr=sin(B);v=mat2(cr,-sr,sr,cr)*v;float pit=mix(-.02,-.30,smoothstep(.5,1.2,S))+.40*smoothstep(1.4,2.,S)-.02*smoothstep(2.4,3.,S)+M.y*.1-.03;vec3 d=normalize(vec3(v.x,v.y,1.05));float cp=cos(pit),sp=sin(pit);d.yz=mat2(cp,-sp,sp,cp)*d.yz;vec3 ro=vec3(M.x*8.,A,Z);vec3 sd=normalize(vec3(.22,mix(.42,.10,G),1.));
+ vec3 c=sky(d,sd,G);float far=mix(2600.,6000.,smoothstep(20.,600.,A));
+ if(d.y<0.){float t=-ro.y/d.y;vec2 p=ro.xz+d.xz*t;vec3 g=ground(p,t);float cs=smoothstep(.5,.7,fbm(p*.0016+vec2(T*.01,4.)));g*=mix(1.,.62,cs*smoothstep(60.,200.,A));g*=mix(vec3(1.1,1.05,.95),vec3(1.1,.7,.55),G);vec3 hz=sky(normalize(vec3(d.x,.03,d.z)),sd,G);c=mix(g,hz,1.-exp(-t/far*1.7));}
+ // cloud sheets between 900 and 1180, drawn far to near
+ float above=step(1040.,ro.y);for(int i=0;i<7;i++){float q=above>.5?float(i):float(6-i);float hh=900.+q*46.;float t=(hh-ro.y)/d.y;if(t>0.&&t<26000.){vec2 p=(ro.xz+d.xz*t)*.00125;float f=fbm(p+vec2(T*.012,0.)+q*.013);float th=.40+abs(q-2.)*.035+.1*(1.-smoothstep(500.,1000.,A));float a=smoothstep(th,th+.16,f)*.62*exp(-t/16000.);a*=smoothstep(0.,160.,t);float lit=q/6.;vec3 k=mix(mix(vec3(.63,.70,.80),vec3(1.),lit),mix(vec3(.5,.32,.46),vec3(1.,.80,.62),lit),G);k+=pow(max(dot(d,sd),0.),8.)*vec3(.35,.22,.1);c=mix(c,mix(k,sky(normalize(vec3(d.x,.05,d.z)),sd,G),smoothstep(5000.,20000.,t)),a);}}
+ float inn=1.-smoothstep(0.,230.,abs(ro.y-1030.));float wisps=fbm(v*2.4+vec2(0.,-Z*.004))*.7+.5;c=mix(c,mix(vec3(.90,.94,.98),vec3(1.,.9,.82),G),clamp(inn*wisps*1.25,0.,.97));
+ c*=1.-.22*dot(v,v);c=pow(c,vec3(.95));gl_FragColor=vec4(c,1.);}`,U,(t,dt)=>{const S=W.s,ro=seg(S,.02,.5),v=lerp(0,62,ease(ro));z+=v*dt*1.4;U.Z.value=z*.6+S*S*210+seg(S,0,.6)*480;const A=2.6+ease(seg(S,.42,1.3))*560+ease(seg(S,1.25,2.35))*480+ease(seg(S,2.3,3.1))*560;U.A.value=A;U.G.value=ease(seg(S,2.2,3.6));const b=ease(seg(S,.75,1.15))*(1-ease(seg(S,1.5,1.9)))*.42;U.B.value=b-W.x*.16*seg(S,.4,.8)+Math.sin(t*.6)*.02+Math.sin(t*23)*.0025*(ro>0&&S<.45?1:0);$('#al').textContent=Math.round((A-2.6)*3.28/10)*10;$('#kt').textContent=Math.round(lerp(0,105,seg(S,.02,.9)));document.body.classList.toggle('deep',S>3.6)},{dpr:W.mob?1:1.25});
+finish();
 </script></body></html>
