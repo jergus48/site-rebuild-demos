@@ -77,7 +77,7 @@ function stage(opt){
   requestAnimationFrame(loop);
 }
 // studio reflections, so metal looks like metal
-function env(scene,r,strips,base){const s=new THREE.Scene();s.background=new THREE.Color(base||'#0b0e16');strips.forEach(a=>{const m=new THREE.Mesh(new THREE.BoxGeometry(a[4]||4,a[5]||4,a[6]||.2),new THREE.MeshBasicMaterial({color:new THREE.Color(a[0]).multiplyScalar(a[7]||4),side:2,toneMapped:false}));m.position.set(a[1],a[2],a[3]);m.lookAt(0,0,0);s.add(m)});const g=new THREE.PMREMGenerator(r);scene.environment=g.fromScene(s,.03).texture;g.dispose()}
+function env(scene,r,strips,base){const s=new THREE.Scene();{const g=new THREE.SphereGeometry(30,32,16),b=new THREE.Color(base||'#0b0e16').convertSRGBToLinear(),c=[],p=g.attributes.position;for(let i=0;i<p.count;i++){const y=p.getY(i)/30,k=y>0?1.2+2.2*y*y:1+y*.75,e=.015;c.push(b.r*k+e,b.g*k+e,b.b*k+e)}g.setAttribute('color',new THREE.Float32BufferAttribute(c,3));s.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({vertexColors:true,side:1,toneMapped:false})))}strips.forEach(a=>{const m=new THREE.Mesh(new THREE.BoxGeometry(a[4]||4,a[5]||4,a[6]||.2),new THREE.MeshBasicMaterial({color:new THREE.Color(a[0]).multiplyScalar(a[7]||4),side:2,toneMapped:false}));m.position.set(a[1],a[2],a[3]);m.lookAt(0,0,0);s.add(m)});const g=new THREE.PMREMGenerator(r);scene.environment=g.fromScene(s,.03).texture;g.dispose()}
 // W.s: which section we are in, as a smooth number (0 = first pinned, 1 = second ...)
 let _so=[];const _ms=()=>{_so=$$('main>section').map(e=>e.offsetTop)};W.s=0;
 function upS(){if(!_so.length)_ms();const y=W.p*(document.documentElement.scrollHeight-innerHeight);let i=0;while(i<_so.length-2&&y>=_so[i+1])i++;W.s=clamp(i+(y-_so[i])/((_so[i+1]-_so[i])||1),0,_so.length-1)}
@@ -95,7 +95,7 @@ function finish(){
 }
 
 let cam,steps,bal,edge,key,sky,rail,N=150,DA=.262,DH=.36,R=3.1,o;const sd=[];
-stage({canvas:$('#c'),fov:50,exposure:1.25,setup({scene,camera,renderer}){cam=camera;scene.background=new THREE.Color('#15181c');scene.fog=new THREE.Fog('#15181c',9,34);o=new THREE.Object3D();env(scene,renderer,[['#ffffff',0,8,0,4,4,.2,1.6],['#ff8a45',-8,0,3,1.2,8,.2,1.8],['#bcd4ff',8,1,-3,1.2,8,.2,2]],'#0c0d10');
+stage({canvas:$('#c'),fov:50,exposure:1.25,setup({scene,camera,renderer}){cam=camera;scene.background=new THREE.Color('#15181c');scene.fog=new THREE.Fog('#15181c',9,34);o=new THREE.Object3D();env(scene,renderer,[['#ffffff',0,8,0,4,4,.2,1.6],['#ff8a45',-8,0,3,1.2,8,.2,1.8],['#bcd4ff',8,1,-3,1.2,8,.2,2]],'#7d8088');
  const steel=new THREE.MeshStandardMaterial({color:'#8e97a1',metalness:.9,roughness:.3}),dark=new THREE.MeshStandardMaterial({color:'#4a515a',metalness:.95,roughness:.28}),hot=new THREE.MeshBasicMaterial({color:'#ff6a1c',toneMapped:false});
  const sh=new THREE.Shape();sh.moveTo(.16,0);sh.lineTo(R,-.36*R*.4);sh.absarc(0,0,R,-.142,.142,false);sh.lineTo(.16,.06);sh.lineTo(.16,0);
  const s2=new THREE.Shape();s2.moveTo(.2,-.07);s2.lineTo(R*Math.cos(-.15),R*Math.sin(-.15));s2.absarc(0,0,R,-.15,.15,false);s2.lineTo(.2,.07);

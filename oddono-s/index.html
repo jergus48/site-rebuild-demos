@@ -60,7 +60,7 @@ function stage(opt){
   requestAnimationFrame(loop);
 }
 // studio reflections, so metal looks like metal
-function env(scene,r,strips,base){const s=new THREE.Scene();s.background=new THREE.Color(base||'#0b0e16');strips.forEach(a=>{const m=new THREE.Mesh(new THREE.BoxGeometry(a[4]||4,a[5]||4,a[6]||.2),new THREE.MeshBasicMaterial({color:new THREE.Color(a[0]).multiplyScalar(a[7]||4),side:2,toneMapped:false}));m.position.set(a[1],a[2],a[3]);m.lookAt(0,0,0);s.add(m)});const g=new THREE.PMREMGenerator(r);scene.environment=g.fromScene(s,.03).texture;g.dispose()}
+function env(scene,r,strips,base){const s=new THREE.Scene();{const g=new THREE.SphereGeometry(30,32,16),b=new THREE.Color(base||'#0b0e16').convertSRGBToLinear(),c=[],p=g.attributes.position;for(let i=0;i<p.count;i++){const y=p.getY(i)/30,k=y>0?1.2+2.2*y*y:1+y*.75,e=.015;c.push(b.r*k+e,b.g*k+e,b.b*k+e)}g.setAttribute('color',new THREE.Float32BufferAttribute(c,3));s.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({vertexColors:true,side:1,toneMapped:false})))}strips.forEach(a=>{const m=new THREE.Mesh(new THREE.BoxGeometry(a[4]||4,a[5]||4,a[6]||.2),new THREE.MeshBasicMaterial({color:new THREE.Color(a[0]).multiplyScalar(a[7]||4),side:2,toneMapped:false}));m.position.set(a[1],a[2],a[3]);m.lookAt(0,0,0);s.add(m)});const g=new THREE.PMREMGenerator(r);scene.environment=g.fromScene(s,.03).texture;g.dispose()}
 // W.s: which section we are in, as a smooth number (0 = first pinned, 1 = second ...)
 let _so=[];const _ms=()=>{_so=$$('main>section').map(e=>e.offsetTop)};W.s=0;
 function upS(){if(!_so.length)_ms();const y=W.p*(document.documentElement.scrollHeight-innerHeight);let i=0;while(i<_so.length-2&&y>=_so[i+1])i++;W.s=clamp(i+(y-_so[i])/((_so[i+1]-_so[i])||1),0,_so.length-1)}
