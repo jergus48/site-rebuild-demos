@@ -61,21 +61,31 @@ addEventListener('pointermove',e=>{W.touched=true;W.tx=e.clientX/innerWidth*2-1;
 function stage(opt){
   const cvs=opt.canvas;let r;
   try{if(!window.THREE)throw 0;r=new THREE.WebGLRenderer({canvas:cvs,antialias:innerWidth>760,powerPreference:'high-performance'})}catch(e){document.body.classList.add('nogl');return}
-  let dpr=Math.min(devicePixelRatio||1,W.mob?1.25:1.6);const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(opt.fov||45,1,.1,400);
+  let dpr=Math.min(devicePixelRatio||1,opt.dpr||(W.mob?1.25:1.6));const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(opt.fov||45,1,.1,400);
   r.outputEncoding=THREE.sRGBEncoding;r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=opt.exposure||1;
   if(opt.shadows){r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap}
   let cw=0,ch=0;const size=()=>{const w=cvs.clientWidth,h=cvs.clientHeight;if(w===cw&&h===ch)return;cw=w;ch=h;W.mob=innerWidth<760;r.setPixelRatio(dpr);r.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();opt.resize&&opt.resize(w,h)};
-  opt.setup({scene,camera,renderer:r});size();
+  opt.setup({scene,camera,renderer:r});if(opt.lin){const sn=new Set();scene.traverse(o=>[].concat(o.material||[]).forEach(m=>{if(!sn.has(m)&&(m.isMeshStandardMaterial||m.isMeshBasicMaterial)){sn.add(m);m.color.convertSRGBToLinear();m.emissive&&m.emissive.convertSRGBToLinear()}}))}size();
   let last=0,acc=0,n=0,T=0;
   const loop=now=>{requestAnimationFrame(loop);if(document.hidden){last=0;return}const ms=Math.min(60,now-(last||now-16));last=now;const dt=ms/1000;if(!W.rm)T+=dt;
     acc+=ms;if(++n===40){const a=acc/n;acc=n=0;if(a>30&&dpr>.6){dpr=Math.max(.6,dpr*.8);cw=0}}
-    size();const k=W.rm?1:1-Math.exp(-dt*5);W.p+=(rawP()-W.p)*k;W.x+=(W.tx-W.x)*k;W.y+=(W.ty-W.y)*k;opt.frame(T,dt);r.render(scene,camera)};
+    size();const k=W.rm?1:1-Math.exp(-dt*5);W.p+=(rawP()-W.p)*k;W.x+=(W.tx-W.x)*k;W.y+=(W.ty-W.y)*k;upS();fades();opt.frame(T,dt);r.render(scene,camera)};
   requestAnimationFrame(loop);
 }
 // studio reflections, so metal looks like metal
 function env(scene,r,strips,base){const s=new THREE.Scene();s.background=new THREE.Color(base||'#0b0e16');strips.forEach(a=>{const m=new THREE.Mesh(new THREE.BoxGeometry(a[4]||4,a[5]||4,a[6]||.2),new THREE.MeshBasicMaterial({color:new THREE.Color(a[0]).multiplyScalar(a[7]||4),side:2,toneMapped:false}));m.position.set(a[1],a[2],a[3]);m.lookAt(0,0,0);s.add(m)});const g=new THREE.PMREMGenerator(r);scene.environment=g.fromScene(s,.03).texture;g.dispose()}
+// W.s: which section we are in, as a smooth number (0 = first pinned, 1 = second ...)
+let _so=[];const _ms=()=>{_so=$$('main>section').map(e=>e.offsetTop)};W.s=0;
+function upS(){if(!_so.length)_ms();const y=W.p*(document.documentElement.scrollHeight-innerHeight);let i=0;while(i<_so.length-2&&y>=_so[i+1])i++;W.s=clamp(i+(y-_so[i])/((_so[i+1]-_so[i])||1),0,_so.length-1)}
+addEventListener('resize',_ms);addEventListener('load',_ms);
+const fadeEls=[];function fades(){const v=innerHeight;fadeEls.forEach(d=>{const r=d.parentNode.getBoundingClientRect();d.style.opacity=seg(r.bottom/v,.5,.8)*(1-seg(r.top/v,.3,.62))})}
+// full-screen fragment shader
+function screen(frag,U,frame,o={}){U.R={value:new THREE.Vector2(1,1)};U.T={value:0};U.P={value:0};U.S={value:0};U.M={value:new THREE.Vector2()};
+ stage(Object.assign({canvas:$('#c'),setup({scene,renderer}){renderer.toneMapping=0;renderer.outputEncoding=THREE.LinearEncoding;const m=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({depthTest:false,uniforms:U,vertexShader:'void main(){gl_Position=vec4(position.xy,0.,1.);}',fragmentShader:'precision highp float;uniform vec2 R,M;uniform float T,P,S;'+frag}));m.frustumCulled=false;scene.add(m);this._r=renderer},frame(t,dt){this._r.getDrawingBufferSize(U.R.value);U.T.value=t;U.P.value=W.p;U.S.value=W.s;U.M.value.set(W.x,W.y);frame&&frame(t,dt)}},o))}
+const tex2=(w,h,f,rep)=>{const c=document.createElement('canvas');c.width=w;c.height=h;f(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;if(rep){t.wrapS=t.wrapT=THREE.RepeatWrapping}return t};
 function finish(){
-  const hd=$('.top');if(hd){let ly=scrollY;addEventListener('scroll',()=>{const y=scrollY,d=y-ly;if(Math.abs(d)<6&&y>40)return;ly=y;hd.classList.toggle('hid',y>innerHeight*.12&&(d>0||rawP()>.93))},{passive:true});if(rawP()>.1)hd.classList.add('hid');hd.addEventListener('focusin',()=>hd.classList.remove('hid'))}
+  fadeEls.push(...$$('section.s>div'));
+  const hd=$('.top');if(hd&&!hd.dataset.keep){let ly=scrollY;addEventListener('scroll',()=>{const y=scrollY,d=y-ly;if(Math.abs(d)<6&&y>40)return;ly=y;hd.classList.toggle('hid',y>innerHeight*.12&&(d>0||rawP()>.93))},{passive:true});if(rawP()>.1)hd.classList.add('hid');hd.addEventListener('focusin',()=>hd.classList.remove('hid'))}
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});$$('.rv').forEach(e=>io.observe(e));
   $$('form').forEach(f=>f.onsubmit=e=>{e.preventDefault();const b=f.querySelector('button');b.textContent='Sent (concept)';b.disabled=true});
 }
